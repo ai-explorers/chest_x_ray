@@ -1,6 +1,7 @@
 # chest_x_ray
 
 # usefull links:
+- https://www.kaggle.com/praveengovi/coronahack-chest-xraydataset (Chest X Ray with corona data)
 - https://www.kaggle.com/nikhilpandey360/lung-segmentation-from-chest-x-ray-dataset
 - https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia/data
 - https://www.kaggle.com/eduardomineo/u-net-lung-segmentation-montgomery-shenzhen
