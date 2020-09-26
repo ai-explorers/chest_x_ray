@@ -5,3 +5,15 @@ data/coronahack-chest-x-ray/train
 data/unet
 data/chest-x-ray
 frontend/node_modules
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
