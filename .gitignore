@@ -4,3 +4,4 @@ data/coronahack-chest-x-ray/test
 data/coronahack-chest-x-ray/train
 data/unet
 data/chest-x-ray
+frontend/node_modules
