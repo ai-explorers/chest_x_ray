@@ -42,6 +42,14 @@ export class PatientDashboardComponent implements OnInit {
     return;
   }
 
+  removePatient(patient) {
+    const index = this.patients.indexOf(patient, 0);
+    if (index > -1) {
+      this.patients.splice(index, 1);
+    }
+    return;
+  }
+
   openDialog(): void {
     let newPatient: PatientType = {
       name: ""
