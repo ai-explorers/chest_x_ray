@@ -12,6 +12,11 @@ export class AddPatientDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddPatientDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public newPatient: PatientType) { }
 
+  onEnter(value: string)
+  {
+    this.dialogRef.close(value);
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }

@@ -21,8 +21,10 @@ import { AddPatientDialogComponent } from './add-patient-dialog/add-patient-dial
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input'; 
 
 @NgModule({
+  /* Components */
   declarations: [
     AppComponent,
     NavComponent,
@@ -30,6 +32,11 @@ import { FormsModule } from '@angular/forms';
     FileAnalysisComponent,
     AddPatientDialogComponent,
   ],
+  /* Components to be loaded into dialogs */
+  entryComponents: [
+    AddPatientDialogComponent,
+  ],
+  /* MODULES */
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -46,6 +53,7 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,
     FormsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

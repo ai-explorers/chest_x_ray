@@ -21,16 +21,13 @@ export class PatientDashboardComponent implements OnInit {
   nColumns: Number = 3;
   // TODO: Move Type definition to extra file, look up best practice
   patients: Array<PatientType> = [
-    { name: 'Sebastian Steindl' },
-    { name: 'Daniel Friedmann' },
-    { name: 'Jan Raber' },
-    { name: 'Eldar Sultanow' }
+    { name: 'John Doe' },
   ];
 
   /** Based on the screen size, switch from three to one column per row */
   patientObserver = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
-      // Handset
+      // Mobile
       if (matches) {
         this.nColumns = 1;
         return this.patients;
@@ -45,8 +42,6 @@ export class PatientDashboardComponent implements OnInit {
     return;
   }
 
-
-  // TODO: Import modules and fill Dialog Component
   openDialog(): void {
     let newPatient: PatientType = {
       name: ""

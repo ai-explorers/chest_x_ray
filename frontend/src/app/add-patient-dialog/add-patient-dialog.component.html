@@ -1,9 +1,8 @@
-<h1 mat-dialog-title>Add new patient</h1>
+<h1 mat-dialog-title>Patient information</h1>
 <div mat-dialog-content>
-  <p>Name</p>
   <mat-form-field>
-    <mat-label>John Doe</mat-label>
-    <input matInput [(ngModel)]="newPatient.name">
+    <mat-label>Name</mat-label>
+    <input #inputName matInput cdkFocusInitial [(ngModel)]="newPatient.name" (keyup.enter)="onEnter(inputName.value)">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
