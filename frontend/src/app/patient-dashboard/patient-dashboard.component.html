@@ -11,7 +11,7 @@
               </button>
               <mat-menu #menu="matMenu" xPosition="before">
                 <button mat-menu-item (click)="fileInput.click()">Add files</button>
-                <input #fileInput hidden (change)="handleFileUpload()" type="file" id="fileUpload">
+                <input #fileInput hidden (change)="handleFileUpload($event.target.files, patient)" type="file" id="fileUpload">
                 <button mat-menu-item (click)="removePatient(patient)">Remove</button>
               </mat-menu>
             </mat-card-title>

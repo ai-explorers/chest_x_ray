@@ -12,8 +12,9 @@ export class FileAnalysisComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleFileUpload() {
-    return;
+  handleFileUpload(files: FileList) {
+    // TODO: Add Rest API call
+    //files.item(0);
   }
 
 }

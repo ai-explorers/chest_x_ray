@@ -7,7 +7,7 @@ import { AddPatientDialogComponent } from '../add-patient-dialog/add-patient-dia
 
 export type PatientType = {
   name: string,
-  //xRays: Array<File>
+  xRays: Array<File>
 }
 
 @Component({
@@ -18,28 +18,33 @@ export type PatientType = {
 
 export class PatientDashboardComponent implements OnInit {
   
-  nColumns: Number = 3;
+  nColumns: Number;
+  fileToUpload: File = null;
   // TODO: Move Type definition to extra file, look up best practice
   patients: Array<PatientType> = [
-    { name: 'John Doe' },
+    {
+      name: 'John Doe',
+      xRays: new Array<File>()
+    },
   ];
 
-  /** Based on the screen size, switch from three to one column per row */
   patientObserver = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
+      // Based on the screen size, switch from three to one column per row
       // Mobile
       if (matches) {
         this.nColumns = 1;
-        return this.patients;
       }
       // Desktop
-      this.nColumns = 3;
+      else {
+        this.nColumns = 3;
+      }
       return this.patients;
     })
   );
 
-  handleFileUpload() {
-    return;
+  handleFileUpload(files: FileList, patient: PatientType) {
+    patient.xRays = patient.xRays.concat(Array.from(files));
   }
 
   removePatient(patient) {
@@ -47,12 +52,12 @@ export class PatientDashboardComponent implements OnInit {
     if (index > -1) {
       this.patients.splice(index, 1);
     }
-    return;
   }
 
   openDialog(): void {
     let newPatient: PatientType = {
-      name: ""
+      name: "",
+      xRays: new Array<File>()
     };
     
     const dialogRef = this.dialog.open(AddPatientDialogComponent, {

@@ -1,4 +1,27 @@
-# ChestUi
+# Frontend (ChestUi)
+
+## Structure
+
+The webpage has a static side navigation and title. You can navigate to specific pages on the left side of the page by using the side navigation.
+
+Currently available pages are:
+- Patient Dashboard
+- File Analysis
+
+The layout of the page dynamically changes when reducing the width of the browser window. This behavior also  simplifies viewing the webpage on handheld devices like smartphones.
+
+## Patient Dashboard
+The Patient Dashboard page currently offers following features:
+- Add a patient (name + multiple files)
+- Upload files
+- Remove patients
+
+## File Analysis
+Page to upload images and view prediction result.
+
+*Todo:* Call Rest API (post) when uploading an image.
+
+## Angular CLI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
 
