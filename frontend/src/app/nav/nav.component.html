@@ -5,8 +5,14 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="dashboard">Patient Dashboard</a>
-      <a mat-list-item href="file-analysis">File Analysis</a>
+      <a mat-list-item href="dashboard">
+        <mat-icon matListIcon>dashboard</mat-icon>
+        Patient Dashboard
+      </a>
+      <a mat-list-item href="file-analysis">
+        <mat-icon matListIcon>publish</mat-icon>
+        File Analysis
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

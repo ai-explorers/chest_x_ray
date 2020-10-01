@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
 import { FileAnalysisComponent } from './file-analysis/file-analysis.component';
+import { AddPatientDialogComponent } from './add-patient-dialog/add-patient-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FileAnalysisComponent } from './file-analysis/file-analysis.component';
     NavComponent,
     PatientDashboardComponent,
     FileAnalysisComponent,
+    AddPatientDialogComponent,
   ],
   imports: [
     BrowserModule,

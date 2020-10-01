@@ -1,11 +1,11 @@
 <div class="grid-container">
     <h1 class="mat-h1">Dashboard</h1>
     <mat-grid-list [cols]="nColumns" rowHeight="350px">
-      <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-grid-tile *ngFor="let patient of patientObserver | async" colspan="1" rowspan="1">
         <mat-card class="dashboard-card">
           <mat-card-header>
             <mat-card-title>
-              {{card.title}}
+              {{patient.name}}
               <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
                 <mat-icon>more_vert</mat-icon>
               </button>
@@ -29,7 +29,7 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
-            <button mat-fab color="primary"><mat-icon>add</mat-icon></button>
+            <button mat-fab color="primary" (click)="openDialog()"><mat-icon>add</mat-icon></button>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
