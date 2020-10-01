@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { MatDialog } from '@angular/material/dialog';
+import { AddPatientDialogComponent } from '../add-patient-dialog/add-patient-dialog.component';
+
 
 export type PatientType = {
   name: string,
@@ -46,13 +49,26 @@ export class PatientDashboardComponent implements OnInit {
   // TODO: Import modules and fill Dialog Component
   openDialog(): void {
     let newPatient: PatientType = {
-      name: "Max Muster"
+      name: ""
     };
-    this.patients.push(newPatient);
+    
+    const dialogRef = this.dialog.open(AddPatientDialogComponent, {
+      width: '250px',
+      data: { name: newPatient.name }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined && result != "") {
+        newPatient.name = result;
+        this.patients.push(newPatient);
+      }
+    });
+
     return;
   }
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+    public dialog: MatDialog) {}
 
   ngOnInit(): void {
   }

@@ -18,6 +18,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
 import { FileAnalysisComponent } from './file-analysis/file-analysis.component';
 import { AddPatientDialogComponent } from './add-patient-dialog/add-patient-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { AddPatientDialogComponent } from './add-patient-dialog/add-patient-dial
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
