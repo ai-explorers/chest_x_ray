@@ -4,7 +4,10 @@ data/coronahack-chest-x-ray/test
 data/coronahack-chest-x-ray/train
 data/unet
 data/chest-x-ray
+
+### Packages and virtual environments ###
 frontend/node_modules
+backend/env/chest_x_ray/*
 
 ### VisualStudioCode ###
 .vscode/*

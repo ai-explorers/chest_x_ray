@@ -16,7 +16,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # segmentation model
-segm_model = tf.keras.models.load_model("models/unet_0109_3.h5", compile=False)
+segm_model = tf.keras.models.load_model("model/unet_0109_3.h5", compile=False)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
