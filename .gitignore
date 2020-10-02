@@ -5,8 +5,9 @@ data/coronahack-chest-x-ray/train
 data/unet
 data/chest-x-ray
 
-### Packages and virtual environments ###
+### Binaries, virtual environments, etc. ###
 frontend/node_modules
+frontend/dist
 backend/env/chest_x_ray/*
 
 ### VisualStudioCode ###

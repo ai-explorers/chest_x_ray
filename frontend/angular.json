@@ -123,6 +123,17 @@
               "devServerTarget": "chest-ui:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@jefiozie/ngx-aws-deploy:deploy",
+          "options": {},
+          "configurations": {
+            "production": {
+              "configuration": "production",
+              "region": "eu-central-1",
+              "bucket": "frontend-chest-x-ray"
+            }
+          }
         }
       }
     }
