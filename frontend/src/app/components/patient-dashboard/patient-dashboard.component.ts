@@ -3,12 +3,7 @@ import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
 import { AddPatientDialogComponent } from '../add-patient-dialog/add-patient-dialog.component';
-
-
-export type PatientType = {
-  name: string,
-  xRays: Array<File>
-}
+import { Patient } from "../../models/patient";
 
 @Component({
   selector: 'app-patient-dashboard',
@@ -19,9 +14,8 @@ export type PatientType = {
 export class PatientDashboardComponent implements OnInit {
   
   nColumns: Number;
-  fileToUpload: File = null;
-  // TODO: Move Type definition to extra file, look up best practice
-  patients: Array<PatientType> = [
+  
+  patients: Array<Patient> = [
     {
       name: 'John Doe',
       xRays: new Array<File>()
@@ -43,7 +37,7 @@ export class PatientDashboardComponent implements OnInit {
     })
   );
 
-  handleFileUpload(files: FileList, patient: PatientType) {
+  handleFileUpload(files: FileList, patient: Patient) {
     patient.xRays = patient.xRays.concat(Array.from(files));
   }
 
@@ -55,7 +49,7 @@ export class PatientDashboardComponent implements OnInit {
   }
 
   openDialog(): void {
-    let newPatient: PatientType = {
+    let newPatient: Patient = {
       name: "",
       xRays: new Array<File>()
     };

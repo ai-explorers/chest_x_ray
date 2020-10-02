@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { PatientType } from "../patient-dashboard/patient-dashboard.component";
+import { Patient } from "../../models/patient";
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -10,7 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class AddPatientDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<AddPatientDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public newPatient: PatientType) { }
+    @Inject(MAT_DIALOG_DATA) public newPatient: Patient) { }
 
   onEnter(value: string)
   {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from "../../services/http.service";
 
 @Component({
   selector: 'app-file-analysis',
@@ -7,14 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileAnalysisComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
   }
 
   handleFileUpload(files: FileList) {
-    // TODO: Add Rest API call
-    //files.item(0);
+    let result: File = this.httpService.lungSegmentation(files.item(0));
   }
 
 }
