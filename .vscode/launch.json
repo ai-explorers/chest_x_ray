@@ -1,12 +1,21 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "type": "firefox",
-        "request": "launch",
-        "name": "Angular",
-        "url": "http://localhost:4200",
-        "webRoot": "${workspaceFolder}/frontend",
-      }
-    ]
-  }
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Stage1 app.py",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/stage1/app.py",
+      "console": "integratedTerminal",
+      "pythonPath": "${workspaceFolder}/backend/env/chest_x_ray/bin/python",
+      "cwd": "${workspaceFolder}/backend/stage1"
+    },
+    {
+      "type": "firefox",
+      "request": "launch",
+      "name": "Angular",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/frontend",
+    }
+  ]
+}

@@ -1,8 +1,6 @@
-*/model/*.h5
-
 ### Binaries, virtual environments, etc. ###
-env/chest_x_ray/*
-stage1/__pycache__
+node_modules
+dist
 
 ### VisualStudioCode ###
 .vscode/*
