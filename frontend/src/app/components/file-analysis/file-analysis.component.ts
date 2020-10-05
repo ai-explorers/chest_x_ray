@@ -8,19 +8,30 @@ import { HttpService } from "../../services/http.service";
 })
 export class FileAnalysisComponent implements OnInit {
 
+  testImg;
+
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
   }
 
   handleFileUpload(files: FileList) {
-
-    this.httpService.lungSegmentation(files.item(0));
-    // .subscribe(
-    //   // display backend response
-    //   (response) => console.log(response),
-    //   (error) => console.log(error)
-    // );
+    this.httpService.lungSegmentation(files.item(0)).subscribe(
+      (res) => {
+        console.log("Lung segmentation was successful.");
+        
+        let binary = '';
+        let bytes = new Uint8Array(res);
+        for (var i = 0; i < bytes.byteLength; i++) {
+          binary += String.fromCharCode( bytes[ i ] );
+        }
+        this.testImg = "data:image/jpg;base64," + window.btoa(binary);
+      },
+      (err) => {
+        console.log("Error");
+        console.log(err);
+      }
+    );
   }
 
 }
