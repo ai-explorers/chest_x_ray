@@ -14,7 +14,13 @@ export class FileAnalysisComponent implements OnInit {
   }
 
   handleFileUpload(files: FileList) {
-    let result: File = this.httpService.lungSegmentation(files.item(0));
+
+    this.httpService.lungSegmentation(files.item(0));
+    // .subscribe(
+    //   // display backend response
+    //   (response) => console.log(response),
+    //   (error) => console.log(error)
+    // );
   }
 
 }

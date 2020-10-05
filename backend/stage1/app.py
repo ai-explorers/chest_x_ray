@@ -5,6 +5,7 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 from flask import Flask, flash, request, redirect, url_for, send_file, make_response
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from PIL import Image
 
@@ -14,6 +15,7 @@ IMG_SIZE = 256 # 256x256
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+CORS(app)
 
 # segmentation model
 segm_model = tf.keras.models.load_model("model/unet_0109_3.h5", compile=False)
@@ -37,7 +39,7 @@ def predict_mask():
             mask = segm_model.predict(np.array([img]), batch_size=None)
             mask = mask.reshape((mask.shape[1], mask.shape[2], mask.shape[3]))
             mask = (mask * 255.).astype(np.uint8)
-            return send_file(encode_img(mask), mimetype='image/jpg')
+            return send_file(encode_img(mask), mimetype='image/jpg')            
 
 def encode_img(data):
      is_success, buffer = cv2.imencode(".jpg", data)

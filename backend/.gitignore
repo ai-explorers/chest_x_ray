@@ -1,5 +1,8 @@
 */model/*.h5
 
+### Binaries, virtual environments, etc. ###
+env/chest_x_ray/*
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
