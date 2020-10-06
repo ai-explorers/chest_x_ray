@@ -8,7 +8,7 @@ import { HttpService } from "../../services/http.service";
 })
 export class FileAnalysisComponent implements OnInit {
 
-  testImg;
+  urls: Array<string> = new Array<string>();
 
   constructor(private httpService: HttpService) { }
 
@@ -25,7 +25,7 @@ export class FileAnalysisComponent implements OnInit {
         for (var i = 0; i < bytes.byteLength; i++) {
           binary += String.fromCharCode( bytes[ i ] );
         }
-        this.testImg = "data:image/jpg;base64," + window.btoa(binary);
+        this.urls.push("data:image/jpg;base64," + window.btoa(binary));
       },
       (err) => {
         console.log("Error");
