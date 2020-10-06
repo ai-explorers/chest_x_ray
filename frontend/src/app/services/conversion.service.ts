@@ -13,6 +13,6 @@ export class ConversionService {
     for (var i = 0; i < bytes.byteLength; i++) {
       binary += String.fromCharCode(bytes[i]);
     }
-    return "data:image/jpg;base64," + window.btoa(binary)
+    return "data:image/jpg;base64," + window.btoa(binary);
   }
 }
