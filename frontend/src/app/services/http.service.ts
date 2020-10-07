@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { YamlService } from "./yaml.service";
+import { ConfigurationService } from "./configuration.service";
 
 const stage1Route: string = "stage1/predict";
 
@@ -14,13 +14,13 @@ export class HttpService {
 
   constructor(private http: HttpClient,
     public formBuilder: FormBuilder,
-    private yamlService: YamlService) {
+    private configService: ConfigurationService) {
       // simulate multipart form, this also takes care of http headers
       this.formGroup = this.formBuilder.group({
         img: [null]
       });
-      this.yamlService.loadYaml('config/config.yaml').subscribe(configObject => {
-        this.backendUrl = configObject.backend_url;
+      this.configService.loadConfig('config.json').subscribe(configObject => {
+        this.backendUrl = configObject.backend.url;
       });
     }
 
