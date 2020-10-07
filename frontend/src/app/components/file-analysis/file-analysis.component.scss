@@ -4,11 +4,11 @@
 
 .segmentation-result {
     width: 200px;
-    float: left;
+    float: left;            // multiple cards within same row
     margin-bottom: 20px;
     margin-right: 10px;
 }
 
 .add-button {
-    clear: left;
+    clear: left;            // button is placed in new row
 }
