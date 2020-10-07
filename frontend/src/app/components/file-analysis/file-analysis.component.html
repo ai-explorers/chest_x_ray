@@ -1,3 +1,15 @@
-<button mat-fab color="primary" (click)="fileInput.click()"><mat-icon>add</mat-icon></button>
-<input #fileInput hidden (change)="handleFileUpload($event.target.files)" type="file" id="fileUpload">
-<img *ngFor="let url of urls" [src]="url" alt=""/>
+<div class="analysis-container">
+    <div>
+        <h1 *ngIf="segmentationResults.length > 0">Segmentation results</h1>
+        <mat-card class="segmentation-result" *ngFor="let result of segmentationResults">
+            <mat-card-title>{{ result.title }}</mat-card-title>
+            <img mat-card-image [src]="result.url" alt=""/>
+        </mat-card>
+    </div>
+    <div class="add-button">
+        <button mat-fab color="primary" (click)="fileInput.click()">
+            <mat-icon>add</mat-icon>
+        </button>
+        <input #fileInput hidden (change)="handleFileUpload($event.target.files)" type="file" id="fileUpload">
+    </div>
+</div>

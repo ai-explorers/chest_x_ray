@@ -9,7 +9,7 @@ import { ConversionService } from "../../services/conversion.service";
 })
 export class FileAnalysisComponent implements OnInit {
 
-  urls: Array<string> = new Array<string>();
+  segmentationResults: { title: string, url: string }[] = [];
 
   constructor(private httpService: HttpService,
     private conversionService: ConversionService) { }
@@ -21,7 +21,10 @@ export class FileAnalysisComponent implements OnInit {
     this.httpService.lungSegmentation(files.item(0)).subscribe(
       (res) => {
         console.log("Lung segmentation was successful.");
-        this.urls.push(this.conversionService.arrayBufferToUrlString(res));
+        this.segmentationResults.push({
+          title: files.item(0).name,
+          url: this.conversionService.arrayBufferToUrlString(res)
+        });
       },
       (err) => {
         console.log("Error");
