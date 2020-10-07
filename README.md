@@ -1,5 +1,7 @@
 # Chest x ray classification with CNNs
 
+![Frontend deployment](https://github.com/Sultanow/chest_x_ray/workflows/Frontend%20deployment/badge.svg?branch=master&event=push)
+
 This repo contains a casaced of CNNs for classifying chest-x-ray images.
 
 0. Unet lung segmentation
