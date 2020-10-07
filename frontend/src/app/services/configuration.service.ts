@@ -20,7 +20,7 @@ export class ConfigurationService {
   */
   loadConfig(file: string): Observable<ConfigObject> {
     return this.http.get(`/assets/config/${file}`, { responseType: 'json' }).pipe(map(response => {
-      let config: ConfigObject = <ConfigObject>response[0];
+      let config: ConfigObject = <ConfigObject>response;
       return config;
     }));
   }
