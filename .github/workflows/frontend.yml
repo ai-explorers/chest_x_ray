@@ -43,16 +43,16 @@ jobs:
         run: ng build --prod
         working-directory: ./frontend
 
-#      - name: Deploy
-#      - uses: jakejarvis/s3-sync-action@master
-#        with:
-#          args: --acl public-read --follow-symlinks --delete
-#        env:
-#          # for information about setting environment variables, check following links
-#          # https://github.com/marketplace/actions/s3-sync
-#          # https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets
-#          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#          AWS_REGION: 'eu-central-1'
-#          SOURCE_DIR: './frontend/dist/chest-ui'
+      - name: Deploy
+      - uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          # for information about setting environment variables, check following links
+          # https://github.com/marketplace/actions/s3-sync
+          # https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'eu-central-1'
+          SOURCE_DIR: './frontend/dist/chest-ui'
