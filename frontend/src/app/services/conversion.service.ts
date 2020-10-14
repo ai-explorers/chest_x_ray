@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, SecurityContext } from '@angular/core';
+import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConversionService {
   
-  constructor() { }
+
+  constructor(private domSanitizer: DomSanitizer) { }
 
   arrayBufferToUrlString(arrayBuffer: ArrayBuffer): string {
     let binary = '';
@@ -15,4 +17,9 @@ export class ConversionService {
     }
     return "data:image/jpg;base64," + window.btoa(binary);
   }
+
+  fileToUrlString(file: File): SafeUrl {
+    return this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
+  }
+
 }

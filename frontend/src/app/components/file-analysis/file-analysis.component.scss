@@ -2,8 +2,37 @@
     margin: 20px;
 }
 
-.segmentation-result {
-    width: 200px;
+// Image inside mat-card-content
+.image-container {
+    position: relative;
+    max-width: 200px;
+}
+
+// Original x-ray image
+.image {
+    display: block;
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+}
+
+// Partially transparent overlay of the segmented mask over the original r-ray
+.overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+}
+
+// Show original image on mouse hover
+.image-container:hover .overlay {
+    opacity: 0;
+}
+
+// Styling for each mat-card
+.card {
+    max-width: 200px;
     float: left;            // multiple cards within same row
     margin-bottom: 20px;
     margin-right: 10px;

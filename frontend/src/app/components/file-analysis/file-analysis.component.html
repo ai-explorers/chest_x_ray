@@ -1,9 +1,14 @@
 <div class="analysis-container">
     <div>
         <h1 *ngIf="segmentationResults.length > 0">Segmentation results</h1>
-        <mat-card class="segmentation-result" *ngFor="let result of segmentationResults">
+        <mat-card class="card" *ngFor="let result of segmentationResults">
             <mat-card-title>{{ result.title }}</mat-card-title>
-            <img mat-card-image [src]="result.url" alt=""/>
+            <mat-card-content>
+                <div class="image-container">
+                    <img class="image" [src]="result.urlOriginal" alt="">
+                    <img class="overlay" [src]="result.url" alt="">
+                </div>
+            </mat-card-content>
         </mat-card>
     </div>
     <div class="add-button">
