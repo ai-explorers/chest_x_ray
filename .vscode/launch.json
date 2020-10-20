@@ -2,13 +2,30 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Stage1 app.py",
+      "name": "Debug jupyter",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "pythonPath": "${workspaceFolder}/backend/env/jupyter/bin/python"
+    },
+    {
+      "name": "Stage1",
       "type": "python",
       "request": "launch",
       "program": "${workspaceFolder}/backend/stage1/app.py",
       "console": "integratedTerminal",
       "pythonPath": "${workspaceFolder}/backend/env/chest_x_ray/bin/python",
       "cwd": "${workspaceFolder}/backend/stage1"
+    },
+    {
+      "name": "Stage2",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/stage2/app.py",
+      "console": "integratedTerminal",
+      "pythonPath": "${workspaceFolder}/backend/env/chest_x_ray/bin/python",
+      "cwd": "${workspaceFolder}/backend/stage2"
     },
     {
       "type": "firefox",
