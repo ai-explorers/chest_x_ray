@@ -13,6 +13,7 @@ from modules.image_preprocessor import ImagePreprocessor
 UPLOAD_FOLDER = 'backend/uploads/'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
 IMG_SIZE = 256 # 256x256
+
 preprocessor = ImagePreprocessor(img_size=IMG_SIZE)
 
 app = Flask(__name__)
