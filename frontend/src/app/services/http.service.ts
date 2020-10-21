@@ -19,7 +19,8 @@ export class HttpService {
     private configService: ConfigurationService) {
       // simulate multipart form, this also takes care of http headers
       this.formGroup = this.formBuilder.group({
-        img: [null]
+        img: [null],
+        mask: [null]
       });
       this.configService.loadConfig('config.json').subscribe(configObject => {
         this.stage1Url = configObject.backend.stage1_url;
@@ -35,5 +36,15 @@ export class HttpService {
 
     // Rest Client call
     return this.http.post(this.stage1Url + stage1Route, formData, { responseType: "arraybuffer"});
+  }
+
+  pneumoniaClassification(mask: File) {
+    // fill form with data    
+    this.formGroup.get('mask').setValue(mask);
+    let formData: FormData = new FormData();
+    formData.append("img", this.formGroup.get('img').value);
+    formData.append("mask", this.formGroup.get('mask').value);
+
+    return this.http.post(this.stage2Url + stage2Route, formData, { responseType: "json" });
   }
 }

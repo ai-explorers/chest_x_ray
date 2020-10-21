@@ -62,7 +62,7 @@ def predict_pneumonia():
 
                 return {
                     "result": result,
-                    "prediction": prediction_value,
+                    "prediction_value": prediction_value,
                 }
 
 

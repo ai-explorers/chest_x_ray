@@ -25,6 +25,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   /* Components */
@@ -59,6 +60,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

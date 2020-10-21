@@ -22,4 +22,10 @@ export class ConversionService {
     return this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
   }
 
+  arrayBufferToFile(buffer: ArrayBuffer, name: string = "mask.jpg", typeString: string = "image/jpg"): File {
+    return new File([buffer], name, {
+      type: typeString,
+    });
+  }
+
 }
