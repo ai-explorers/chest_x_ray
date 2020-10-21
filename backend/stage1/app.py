@@ -3,11 +3,12 @@ import io
 import tensorflow as tf
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
 from flask import Flask, flash, request, redirect, url_for, send_file, make_response
 from flask_cors import CORS
-from werkzeug.utils import secure_filename
 from PIL import Image
+
+# do not use CUDA since we will use the CPU inside the docker container
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 UPLOAD_FOLDER = 'backend/uploads/'
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
@@ -46,4 +47,4 @@ def encode_img(data):
      return io.BytesIO(buffer)
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run()
