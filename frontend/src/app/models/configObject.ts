@@ -1,5 +1,6 @@
 export interface ConfigObject {
     backend: {
-        url: string;
+        stage1_url: string;
+        stage2_url: string;
     };
 }

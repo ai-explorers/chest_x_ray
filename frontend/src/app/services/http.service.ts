@@ -4,13 +4,15 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { ConfigurationService } from "./configuration.service";
 
 const stage1Route: string = "stage1/predict";
+const stage2Route: string = "stage2/predict";
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
   formGroup: FormGroup;
-  backendUrl: string;
+  stage1Url: string;
+  stage2Url: string;
 
   constructor(private http: HttpClient,
     public formBuilder: FormBuilder,
@@ -20,7 +22,8 @@ export class HttpService {
         img: [null]
       });
       this.configService.loadConfig('config.json').subscribe(configObject => {
-        this.backendUrl = configObject.backend.url;
+        this.stage1Url = configObject.backend.stage1_url;
+        this.stage2Url = configObject.backend.stage2_url;
       });
     }
 
@@ -31,6 +34,6 @@ export class HttpService {
     formData.append("img", this.formGroup.get('img').value);
 
     // Rest Client call
-    return this.http.post(this.backendUrl + stage1Route, formData, { responseType: "arraybuffer"});
+    return this.http.post(this.stage1Url + stage1Route, formData, { responseType: "arraybuffer"});
   }
 }
