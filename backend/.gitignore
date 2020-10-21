@@ -2,7 +2,9 @@
 
 ### Binaries, virtual environments, etc. ###
 env/chest_x_ray/*
-stage1/__pycache__
+env/jupyter/*
+*/__pycache__
+*/*/__pycache__
 
 ### VisualStudioCode ###
 .vscode/*
