@@ -2,11 +2,8 @@ import os
 import io
 import tensorflow as tf
 import numpy as np
-import matplotlib.pyplot as plt
 from flask import Flask, flash, request, redirect, url_for, send_file, make_response
 from flask_cors import CORS
-from werkzeug.utils import secure_filename
-from PIL import Image
 import json
 from modules.image_preprocessor import ImagePreprocessor
 
@@ -67,4 +64,4 @@ def predict_pneumonia():
 
 
 if __name__ == '__main__':
-    app.run(debug = True, port=5001)
+    app.run()
