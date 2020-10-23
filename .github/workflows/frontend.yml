@@ -43,12 +43,16 @@ jobs:
         run: ng build --prod
         working-directory: ./frontend
       
-      - name: Get Backend URL
-        run: 'echo "$BACKEND_URL" > ./frontend/dist/chest-ui/assets/config/backend_url.txt'
+      - name: Configure Backend URL
+        run: JSON_CONFIG='{"backend":{"stage1_url":"%s","stage2_url":"http://127.0.0.1:5001/"}}\n' \
+          printf "$JSON_CONFIG" "$BACKEND_URL" >> ./frontend/dist/chest-ui/assets/config/config.json
         shell: bash
         env:
           BACKEND_URL: ${{secrets.AWS_S3_BUCKET}}
-
+          
+        
+        
+          
       - name: Deploy
         uses: jakejarvis/s3-sync-action@master
         with:
