@@ -62,6 +62,9 @@ def predict_pneumonia():
                     "prediction_value": prediction_value,
                 }
 
+@app.route('/health')
+def healthcheck():
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
 if __name__ == '__main__':
     app.run()

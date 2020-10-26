@@ -2,10 +2,10 @@ import os
 import io
 import tensorflow as tf
 import numpy as np
+import json
 import cv2
 from flask import Flask, flash, request, redirect, url_for, send_file, make_response
 from flask_cors import CORS
-from PIL import Image
 
 # do not use CUDA since we will use the CPU inside the docker container
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
@@ -40,7 +40,11 @@ def predict_mask():
             mask = segm_model.predict(np.array([img]), batch_size=None)
             mask = mask.reshape((mask.shape[1], mask.shape[2], mask.shape[3]))
             mask = (mask * 255.).astype(np.uint8)
-            return send_file(encode_img(mask), mimetype='image/jpg')            
+            return send_file(encode_img(mask), mimetype='image/jpg')         
+
+@app.route('/health')
+def healthcheck():
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
 def encode_img(data):
      is_success, buffer = cv2.imencode(".jpg", data)
