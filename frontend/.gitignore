@@ -1,6 +1,7 @@
-### Binaries, virtual environments, etc. ###
+### Binaries, virtual environments, local configuration, etc. ###
 node_modules
 dist
+src/assets/config/config.json
 
 ### VisualStudioCode ###
 .vscode/*
