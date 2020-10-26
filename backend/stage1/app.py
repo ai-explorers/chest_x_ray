@@ -27,7 +27,7 @@ def allowed_file(filename):
 def encodeImage(data):
     return bytes(data) #encode Numpay to Bytes string
 
-@app.route('/stage1/predict', methods = ['GET', 'POST'])
+@app.route('/predict', methods = ['GET', 'POST'])
 def predict_mask():
     if request.method == 'POST':
         f = request.files['img']

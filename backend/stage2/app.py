@@ -23,7 +23,7 @@ cnn_model = tf.keras.models.load_model("model/cnn_4channel_0809_w_masks.h5", com
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/stage2/predict', methods = ['GET', 'POST'])
+@app.route('/predict', methods = ['GET', 'POST'])
 def predict_pneumonia():
     if request.method == 'POST':
         # extract data from message
