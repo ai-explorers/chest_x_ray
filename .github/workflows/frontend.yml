@@ -45,11 +45,12 @@ jobs:
       
       - name: Configure Backend URL
         run: |
-          JSON_CONFIG='{"backend":{"stage1_url":"%s","stage2_url":"http://127.0.0.1:5001/"}}\n'
-          printf "$JSON_CONFIG" "$BACKEND_URL" >> ./frontend/dist/chest-ui/assets/config/config.json
+          JSON_CONFIG='{"backend":{"stage1_url":"%s","stage2_url":"%s"}}\n'
+          printf "$JSON_CONFIG" "$BACKEND_URL_STAGE1" "$BACKEND_URL_STAGE2" >> ./frontend/dist/chest-ui/assets/config/config.json
         shell: bash
         env:
-          BACKEND_URL: ${{secrets.AWS_S3_BUCKET}}
+          BACKEND_URL_STAGE1: ${{secrets.BACKEND_URL_STAGE1}}
+          BACKEND_URL_STAGE2: ${{secrets.BACKEND_URL_STAGE2}}
           
         
         
