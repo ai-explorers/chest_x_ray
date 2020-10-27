@@ -28,6 +28,15 @@
       "cwd": "${workspaceFolder}/backend/stage2"
     },
     {
+      "name": "Stage3",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/stage3/app.py",
+      "console": "integratedTerminal",
+      "pythonPath": "${workspaceFolder}/backend/env/chest_x_ray/bin/python",
+      "cwd": "${workspaceFolder}/backend/stage3"
+    },
+    {
       "type": "firefox",
       "request": "launch",
       "name": "Angular",
