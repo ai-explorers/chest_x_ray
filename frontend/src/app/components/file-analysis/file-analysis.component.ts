@@ -12,7 +12,7 @@ import { forkJoin } from 'rxjs';
 })
 export class FileAnalysisComponent implements OnInit {
 
-  segmentationResults: {
+  results: {
     title: string,
     url: string,
     urlOriginal: SafeUrl,
@@ -33,7 +33,7 @@ export class FileAnalysisComponent implements OnInit {
     .subscribe((segmentationRes: ArrayBuffer) => {
       // display stage1 result
       console.log("Stage1: Lung segmentation was successful.");
-      this.segmentationResults.push({
+      this.results.push({
         title: files.item(0).name,
         url: this.conversionService.arrayBufferToUrlString(segmentationRes),
         urlOriginal: this.conversionService.fileToUrlString(files.item(0)),
@@ -52,12 +52,12 @@ export class FileAnalysisComponent implements OnInit {
         console.log("Stage2&3: Pneumonia and viral classification was successful.");
         console.log("Pneumonia result and prediction value: " + pneumoniaRes.result + ", " + pneumoniaRes.prediction_value);
         console.log("Viral result and prediction value: " + viralRes.result + ", " + viralRes.prediction_value);
-        let currentResult = this.segmentationResults.pop();
+        let currentResult = this.results.pop();
         currentResult.pneumoniaResult = pneumoniaRes.result;
         currentResult.pneumoniaPredictionValue = Math.round(pneumoniaRes.prediction_value * 100);
         currentResult.viralResult = viralRes.result;
         currentResult.viralPredictionValue = Math.round(viralRes.prediction_value * 100);
-        this.segmentationResults.push(currentResult);
+        this.results.push(currentResult);
       },
       err => {
         console.log("Error during pneumonia and viral classification!");

@@ -1,7 +1,7 @@
 <div class="analysis-container">
     <div>
-        <h1 *ngIf="segmentationResults.length > 0">Segmentation results</h1>
-        <mat-card class="card" *ngFor="let result of segmentationResults">
+        <h1 *ngIf="results.length > 0">Results</h1>
+        <mat-card class="card" *ngFor="let result of results">
             <mat-card-title>{{ result.title }}</mat-card-title>
             <mat-card-content>
                 <div class="image-container">
