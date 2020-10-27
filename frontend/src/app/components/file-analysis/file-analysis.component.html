@@ -8,15 +8,15 @@
                     <img class="image" [src]="result.urlOriginal" alt="">
                     <img class="overlay" [src]="result.url" alt="">
                 </div>
-                <h3 *ngIf="result.result == null; else classificationResult">Classification</h3>
+                <h3 *ngIf="result.pneumoniaResult == null; else classificationResult">Classification</h3>
                 <ng-template #classificationResult>
-                    <h3>Classification: {{result.result}}</h3>
+                    <h3>Classification: {{result.pneumoniaResult}}</h3>
                 </ng-template>
-                <mat-progress-bar *ngIf="result.predictionValue == null; else progress" mode="buffer"></mat-progress-bar>
+                <mat-progress-bar *ngIf="result.pneumoniaPredictionValue == null; else progress" mode="buffer"></mat-progress-bar>
                 <ng-template #progress>
-                    <mat-progress-bar *ngIf="result.predictionValue < 30" class="green-progress" mode="determinate" value={{result.predictionValue}}></mat-progress-bar>
-                    <mat-progress-bar *ngIf="result.predictionValue >= 30 && result.predictionValue <= 70" class="yellow-progress" mode="determinate" value={{result.predictionValue}}></mat-progress-bar>
-                    <mat-progress-bar *ngIf="result.predictionValue > 70" class="red-progress" mode="determinate" value={{result.predictionValue}}></mat-progress-bar>
+                    <mat-progress-bar *ngIf="result.pneumoniaPredictionValue < 30" class="green-progress" mode="determinate" value={{result.pneumoniaPredictionValue}}></mat-progress-bar>
+                    <mat-progress-bar *ngIf="result.pneumoniaPredictionValue >= 30 && result.pneumoniaPredictionValue <= 70" class="yellow-progress" mode="determinate" value={{result.pneumoniaPredictionValue}}></mat-progress-bar>
+                    <mat-progress-bar *ngIf="result.pneumoniaPredictionValue > 70" class="red-progress" mode="determinate" value={{result.pneumoniaPredictionValue}}></mat-progress-bar>
                 </ng-template>
                 </mat-card-content>
         </mat-card>
