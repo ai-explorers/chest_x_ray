@@ -41,3 +41,15 @@
 .add-button {
     clear: left;            // button is placed in new row
 }
+
+.spinner-container {
+    height: 150px;
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+}
+
+.loading{
+    color: white;
+    padding-top: 100px;
+}

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -27,6 +27,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { GaugeChartModule } from 'angular-gauge-chart';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   /* Components */
@@ -63,6 +64,10 @@ import { GaugeChartModule } from 'angular-gauge-chart';
     ReactiveFormsModule,
     MatProgressBarModule,
     GaugeChartModule,
+    NgxSpinnerModule,
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
   ],
   providers: [],
   bootstrap: [AppComponent]
