@@ -18,16 +18,18 @@
                         </ngx-spinner>
                     </div>
                     <ng-template #prediction>
-                        <rg-gauge-chart
-                            [canvasWidth]="canvasWidth"
-                            [needleValue]="result.pneumoniaPredictionValue"
-                            [options]="optionsPneumoniaGauge">
-                        </rg-gauge-chart>
-                        <rg-gauge-chart *ngIf="result.pneumoniaPredictionValue > 25"
-                            [canvasWidth]="canvasWidth"
-                            [needleValue]="result.viralPredictionValue"
-                            [options]="optionsViralGauge">
-                        </rg-gauge-chart>
+                        <div class="gauge-chart-container">
+                            <rg-gauge-chart
+                                [canvasWidth]="canvasWidth"
+                                [needleValue]="result.pneumoniaPredictionValue"
+                                [options]="optionsPneumoniaGauge">
+                            </rg-gauge-chart>
+                            <rg-gauge-chart *ngIf="result.pneumoniaPredictionValue > 25"
+                                [canvasWidth]="canvasWidth"
+                                [needleValue]="result.viralPredictionValue"
+                                [options]="optionsViralGauge">
+                            </rg-gauge-chart>
+                        </div>
                     </ng-template>
                 </ng-template>
             </mat-card-content>
