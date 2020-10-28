@@ -12,6 +12,26 @@ import { forkJoin } from 'rxjs';
 })
 export class FileAnalysisComponent implements OnInit {
 
+  public canvasWidth = 200
+  public optionsPneumoniaGauge = {
+    hasNeedle: true,
+    outerNeedle: true,
+    needleColor: "black",
+    needleStartValue: 50,
+    arcColors: ["rgb(61,204,91)","rgb(239,214,19)","rgb(255,84,84)"],
+    arcDelimiters: [25,75],
+    rangeLabel: ["normal","pneumonia"],
+  }
+  public optionsViralGauge = {
+    hasNeedle: true,
+    outerNeedle: true,
+    needleColor: "black",
+    needleStartValue: 50,
+    arcColors: ['lightgray'],
+    arcDelimiters: [25,75],
+    rangeLabel: ["bacterial","viral"],
+  }
+
   results: {
     title: string,
     url: string,

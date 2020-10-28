@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { GaugeChartModule } from 'angular-gauge-chart';
 
 @NgModule({
   /* Components */
@@ -61,6 +62,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     HttpClientModule,
     ReactiveFormsModule,
     MatProgressBarModule,
+    GaugeChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

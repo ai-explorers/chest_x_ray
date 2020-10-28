@@ -8,17 +8,20 @@
                     <img class="image" [src]="result.urlOriginal" alt="">
                     <img class="overlay" [src]="result.url" alt="">
                 </div>
-                <h3 *ngIf="result.pneumoniaResult == null; else classificationResult">Classification</h3>
-                <ng-template #classificationResult>
-                    <h3>Classification: {{result.pneumoniaResult}}</h3>
+                <div *ngIf="result.pneumoniaPredictionValue == null; else prediction"></div>
+                <ng-template #prediction>
+                    <rg-gauge-chart
+                        [canvasWidth]="canvasWidth"
+                        [needleValue]="result.pneumoniaPredictionValue"
+                        [options]="optionsPneumoniaGauge">
+                    </rg-gauge-chart>
+                    <rg-gauge-chart
+                        [canvasWidth]="canvasWidth"
+                        [needleValue]="result.viralPredictionValue"
+                        [options]="optionsViralGauge">
+                    </rg-gauge-chart>
                 </ng-template>
-                <mat-progress-bar *ngIf="result.pneumoniaPredictionValue == null; else progress" mode="buffer"></mat-progress-bar>
-                <ng-template #progress>
-                    <mat-progress-bar *ngIf="result.pneumoniaPredictionValue < 30" class="green-progress" mode="determinate" value={{result.pneumoniaPredictionValue}}></mat-progress-bar>
-                    <mat-progress-bar *ngIf="result.pneumoniaPredictionValue >= 30 && result.pneumoniaPredictionValue <= 70" class="yellow-progress" mode="determinate" value={{result.pneumoniaPredictionValue}}></mat-progress-bar>
-                    <mat-progress-bar *ngIf="result.pneumoniaPredictionValue > 70" class="red-progress" mode="determinate" value={{result.pneumoniaPredictionValue}}></mat-progress-bar>
-                </ng-template>
-                </mat-card-content>
+            </mat-card-content>
         </mat-card>
     </div>
     <div class="add-button">
