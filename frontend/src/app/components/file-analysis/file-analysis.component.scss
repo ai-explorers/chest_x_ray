@@ -1,3 +1,4 @@
+// Entire page except navbar and toolbar
 .analysis-container {
     margin: 20px;
 }
@@ -38,10 +39,12 @@
     margin-right: 10px;
 }
 
+// button to upload an image
 .add-button {
     clear: left;            // button is placed in new row
 }
 
+// spinner that gets displayed while waiting for backend response
 .spinner-container {
     height: 150px;
     width: 100%;
@@ -49,11 +52,13 @@
     margin-top: 10px;
 }
 
+// title of the mat-card
 .card-title {
     overflow: hidden;
     font-size: medium;
 }
 
+// gauge charts
 .gauge-chart-container {
     margin-top: 10px;
 }

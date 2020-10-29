@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../../services/http.service";
 import { ConversionService } from "../../services/conversion.service";
 import { SafeUrl } from "@angular/platform-browser";
-import { tap, concatMap, mergeMap } from "rxjs/operators";
 import { forkJoin } from 'rxjs';
 import { NgxSpinnerService } from "ngx-spinner";
 
