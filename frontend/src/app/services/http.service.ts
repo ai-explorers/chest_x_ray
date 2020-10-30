@@ -2,36 +2,50 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ConfigurationService } from "./configuration.service";
+import { Observable } from 'rxjs';
 
 const stage1Route: string = "stage1/predict";
 const stage2Route: string = "stage2/predict";
 const stage3Route: string = "stage3/predict";
 
+/**
+ * Service for http calls to backend
+ * 
+ * @method `lungSegmentation(file)` - sends a http post request for stage1 to backend
+ * @method `pneumoniaClassification(mask)` - sends a http post request for stage2 to backend
+ * @method `viralClassification(mask)` - sends a http post request for stage3 to backend
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
-  formGroup: FormGroup;
-  stage1Url: string;
-  stage2Url: string;
-  stage3Url: string;
+  private formGroup: FormGroup;
+  private stage1Url: string;
+  private stage2Url: string;
+  private stage3Url: string;
 
   constructor(private http: HttpClient,
     public formBuilder: FormBuilder,
     private configService: ConfigurationService) {
-      // simulate multipart form, this also takes care of http headers
-      this.formGroup = this.formBuilder.group({
-        img: [null],
-        mask: [null]
-      });
-      this.configService.loadConfig('config.json').subscribe(configObject => {
-        this.stage1Url = configObject.backend.stage1_url;
-        this.stage2Url = configObject.backend.stage2_url;
-        this.stage3Url = configObject.backend.stage2_url; // TODO: This should be a separate entry in the config (github secret, config.json etc.)
-      });
-    }
+    // simulate multipart form, this also takes care of http headers
+    this.formGroup = this.formBuilder.group({
+      img: [null],
+      mask: [null]
+    });
+    this.configService.loadConfig('config.json').subscribe(configObject => {
+      this.stage1Url = configObject.backend.stage1_url;
+      this.stage2Url = configObject.backend.stage2_url;
+      this.stage3Url = configObject.backend.stage2_url; // TODO: This should be a separate entry in the config (github secret, config.json etc.)
+    });
+  }
 
-  lungSegmentation(file: File) {
+  /**
+  * Sends a http post request for stage1 (lung segmentation) to backend
+  * 
+  * @param file chest-x-ray image to be segmented
+  * @returns an observable containing the cutout
+  */
+  lungSegmentation(file: File): Observable<ArrayBuffer> {
     // fill form with data    
     this.formGroup.get('img').setValue(file);
     let formData: FormData = new FormData();
@@ -41,7 +55,13 @@ export class HttpService {
     return this.http.post(this.stage1Url + stage1Route, formData, { responseType: "arraybuffer"});
   }
 
-  pneumoniaClassification(mask: File) {
+  /**
+  * Sends a http post request for stage2 (pneumonia classification) to backend
+  * 
+  * @param mask result of stage1 (lung cutout)
+  * @returns an observable containing the classification results
+  */
+  pneumoniaClassification(mask: File): Observable<Object> {
     // fill form with data    
     this.formGroup.get('mask').setValue(mask);
     let formData: FormData = new FormData();
@@ -51,7 +71,13 @@ export class HttpService {
     return this.http.post(this.stage2Url + stage2Route, formData, { responseType: "json" });
   }
 
-  viralClassification(mask: File) {
+  /**
+  * Sends a http post request for stage3 (viral classification) to backend
+  * 
+  * @param mask result of stage1 (lung cutout)
+  * @returns an observable containing the classification results
+  */
+  viralClassification(mask: File): Observable<Object> {
     // fill form with data    
     this.formGroup.get('mask').setValue(mask);
     let formData: FormData = new FormData();

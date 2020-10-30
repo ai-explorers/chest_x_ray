@@ -4,6 +4,13 @@ import { map } from 'rxjs/operators';
 import { HttpClient } from "@angular/common/http";
 import { ConfigObject } from "../models/configObject";
 
+const basePath: string = "/assets/config/";
+
+/**
+ * Service for handling frontend configuration and parsing config.json
+ * 
+ * @method `loadConfig(filePath)` - loads and parses a config file into an object
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -12,14 +19,14 @@ export class ConfigurationService {
   constructor(private http: HttpClient) { }
 
   /**
-  * Parses a config file into an object 
+  * Loads and parses a config file into an object 
   * 
   * IMPORTANT: root directory has to be /assets/config/
   * @param file relative path + file name
-  * @returns an Observable that returns a ConfigObject containing the parsed configuration
+  * @returns an observable for an object containing the parsed configuration
   */
-  loadConfig(file: string): Observable<ConfigObject> {
-    return this.http.get(`/assets/config/${file}`, { responseType: 'json' }).pipe(map(response => {
+  loadConfig(filePath: string): Observable<ConfigObject> {
+    return this.http.get(`${basePath + filePath}`, { responseType: 'json' }).pipe(map(response => {
       let config: ConfigObject = <ConfigObject>response;
       return config;
     }));
