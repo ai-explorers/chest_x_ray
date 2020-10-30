@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../../services/http.service";
 import { ConversionService } from "../../services/conversion.service";
+import { GaugeChartOption } from "../../models/gaugeChartOption";
 import { SafeUrl } from "@angular/platform-browser";
 import { forkJoin } from 'rxjs';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -12,8 +13,8 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class FileAnalysisComponent implements OnInit {
 
-  public canvasWidth = 200
-  public optionsPneumoniaGauge = {
+  public canvasWidth: number = 200
+  public optionsPneumoniaGauge: GaugeChartOption = {
     hasNeedle: true,
     outerNeedle: true,
     needleColor: "black",
@@ -22,7 +23,7 @@ export class FileAnalysisComponent implements OnInit {
     arcDelimiters: [25,75],
     rangeLabel: ["normal","pneumonia"],
   }
-  public optionsViralGauge = {
+  public optionsViralGauge: GaugeChartOption = {
     hasNeedle: true,
     outerNeedle: true,
     needleColor: "black",
