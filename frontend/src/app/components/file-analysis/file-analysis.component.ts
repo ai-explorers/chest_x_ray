@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../../services/http.service";
 import { ConversionService } from "../../services/conversion.service";
 import { GaugeChartOption } from "../../models/gaugeChartOption";
-import { SafeUrl } from "@angular/platform-browser";
+import { PredictionResult } from "../../models/predictionResult";
 import { forkJoin } from 'rxjs';
 import { NgxSpinnerService } from "ngx-spinner";
 
@@ -33,51 +33,35 @@ export class FileAnalysisComponent implements OnInit {
     rangeLabel: ["bacterial","viral"],
   }
 
-  results: {
-    title: string,
-    url: string,
-    urlOriginal: SafeUrl,
-    pneumoniaResult: string,
-    pneumoniaPredictionValue: number,
-    viralResult: string,
-    viralPredictionValue: number,
-   }[] = [];
+  results: Array<PredictionResult>;
 
   constructor(private httpService: HttpService,
     private conversionService: ConversionService,
     private spinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.results = new Array<PredictionResult>()
   }
 
   handleFileUpload(files: FileList) {
-    // display spinner
-    this.results.push({
+    // create and display new card
+    let newResult: PredictionResult = {
       title: files.item(0).name,
-      url: null,
-      urlOriginal: null,
-      pneumoniaResult: null,
-      pneumoniaPredictionValue: null,
-      viralResult: null,
-      viralPredictionValue: null
-    });
+    };
+    this.results.push(newResult);
     
+    // display spinner for stage1
     this.spinnerService.show();
     
     this.httpService.lungSegmentation(files.item(0))
     .subscribe((segmentationRes: ArrayBuffer) => {
-      // display stage1 result
-      this.spinnerService.hide();
       console.log("Stage1: Lung segmentation was successful.");
-      this.updateLatestResult({
-        title: files.item(0).name,
-        url: this.conversionService.arrayBufferToUrlString(segmentationRes),
-        urlOriginal: this.conversionService.fileToUrlString(files.item(0)),
-        pneumoniaResult: null,
-        pneumoniaPredictionValue: null,
-        viralResult: null,
-        viralPredictionValue: null
-      });
+      this.spinnerService.hide();
+      // display stage1 result
+      newResult.urlCutout = this.conversionService.arrayBufferToUrlString(segmentationRes);
+      newResult.urlImage = this.conversionService.fileToUrlString(files.item(0)),
+      this.results = this.updateLatestResult(this.results, newResult);
+      // display spinner for stage2
       this.spinnerService.show();
       // simultaneous http calls for pneumonia and viral classification
       // TODO: forkJoin only returns if both calls return! If stage2 or stage3 is unavailable, no result gets displayed! Use a mechanism like mergeMap here, so it's okay if only one call returns.
@@ -90,13 +74,13 @@ export class FileAnalysisComponent implements OnInit {
         console.log("Stage2&3: Pneumonia and viral classification was successful.");
         console.log("Pneumonia result and prediction value: " + pneumoniaRes.result + ", " + pneumoniaRes.prediction_value);
         console.log("Viral result and prediction value: " + viralRes.result + ", " + viralRes.prediction_value);
-        // TODO: Match object structures and use updateLatestResult instead of manually updating
-        let currentResult = this.results.pop();
-        currentResult.pneumoniaResult = pneumoniaRes.result;
-        currentResult.pneumoniaPredictionValue = Math.round(pneumoniaRes.prediction_value * 100);
-        currentResult.viralResult = viralRes.result;
-        currentResult.viralPredictionValue = Math.round(viralRes.prediction_value * 100);
-        this.results.push(currentResult);
+        // scale prediction values from 0-1 to 0-100
+        newResult.pneumoniaPredictionValue = Math.round(pneumoniaRes.prediction_value * 100);
+        newResult.viralPredictionValue = Math.round(viralRes.prediction_value * 100);
+        newResult.pneumoniaResult = pneumoniaRes.result;
+        newResult.viralResult = viralRes.result;
+        // update view
+        this.results = this.updateLatestResult(this.results, newResult);
       },
       err => {
         console.log("Error during pneumonia and viral classification!");
@@ -105,16 +89,17 @@ export class FileAnalysisComponent implements OnInit {
     });
   }
 
-  private updateLatestResult(newResult: any): void {
-    let latestResult = this.results.pop();
+  private updateLatestResult(resultList: Array<PredictionResult>, newResult: PredictionResult): Array<PredictionResult> {
+    let latestResult = resultList.pop();
     for (const key in latestResult) {
       if (latestResult.hasOwnProperty(key)) {
-        if (newResult.hasOwnProperty(key) && newResult[key] != null) {
+        if (newResult.hasOwnProperty(key) && newResult[key] != null && newResult[key] != undefined) {
           latestResult[key] = newResult[key];
         }
       }
     }
-    this.results.push(latestResult);
+    resultList.push(latestResult);
+    return resultList;
   }
 
 }

@@ -4,14 +4,14 @@
         <mat-card class="card" *ngFor="let result of results">
             <mat-card-title class="card-title">{{ result.title }}</mat-card-title>
             <mat-card-content>
-                <div *ngIf="result.urlOriginal==null; else image" class="spinner-container">
+                <div *ngIf="result.urlImage==null; else image" class="spinner-container">
                     <ngx-spinner [fullScreen]="false" type="ball-spin-clockwise" size="medium" color="black" bdColor="rgba(51,51,51,0)">
                     </ngx-spinner>
                 </div>
                 <ng-template #image>
                     <div class="image-container">
-                        <img class="image" [src]="result.urlOriginal" alt="">
-                        <img class="overlay" [src]="result.url" alt="">
+                        <img class="image" [src]="result.urlImage" alt="">
+                        <img class="overlay" [src]="result.urlCutout" alt="">
                     </div>
                     <div *ngIf="result.pneumoniaPredictionValue == null; else prediction" class="spinner-container">
                         <ngx-spinner [fullScreen]="false" type="ball-spin-clockwise" size="medium" color="black" bdColor="rgba(51,51,51,0)">
