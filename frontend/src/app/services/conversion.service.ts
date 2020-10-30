@@ -1,4 +1,4 @@
-import { Injectable, SecurityContext } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 
 /**
