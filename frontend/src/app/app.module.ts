@@ -5,6 +5,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { PatientDashboardComponent } from './components/patient-dashboard/patient-dashboard.component';
 import { FileAnalysisComponent } from './components/file-analysis/file-analysis.component';
 import { AddPatientDialogComponent } from './components/add-patient-dialog/add-patient-dialog.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 // Angular
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -41,6 +42,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     PatientDashboardComponent,
     FileAnalysisComponent,
     AddPatientDialogComponent,
+    WelcomeComponent,
   ],
   /* Components to be loaded into dialogs */
   entryComponents: [
