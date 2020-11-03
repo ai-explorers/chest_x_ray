@@ -10,6 +10,10 @@ This repo contains a casaced of CNNs for classifying chest-x-ray images.
 
 More documentation about the project will come soon.
 
+## Frontend Demo
+
+![Frontend Demo GIF](./img/frontend_demo.gif)
+
 ## Some helpful stuff
 
 ### useful links:
