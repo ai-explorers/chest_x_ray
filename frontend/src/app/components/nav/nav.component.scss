@@ -25,3 +25,14 @@ a.nostyle:visited {
   text-decoration: inherit;
   color: inherit;
 }
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+

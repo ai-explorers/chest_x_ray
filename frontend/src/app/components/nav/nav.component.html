@@ -5,6 +5,14 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
+      <a mat-list-item href="">
+        <mat-icon matListIcon>home</mat-icon>
+        Home
+      </a>
+      <a mat-list-item href="get-started">
+        <mat-icon matListIcon>emoji_objects</mat-icon>
+        Tutorial
+      </a>
       <a mat-list-item href="dashboard">
         <mat-icon matListIcon>dashboard</mat-icon>
         Patient Dashboard
@@ -26,8 +34,13 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>
-        <a class="nostyle" href="">Chest X-ray UI</a>
+        <a class="nostyle" href=""><h1>Chest X-ray UI</h1></a>
       </span>
+      <div class="flex-spacer"></div>
+      <a mat-button href="https://github.com/ai-explorers/chest_x_ray">
+        <img src="./../../../assets/img/github-light.png" style="height: 45px;">
+        <img src="./../../../assets/img/github-font-logo.png" style="height: 35px;">
+      </a>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
