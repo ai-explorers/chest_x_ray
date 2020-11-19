@@ -29,6 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatDividerModule } from '@angular/material/divider';
 
 // External libraries
 import { GaugeChartModule } from 'angular-gauge-chart';
@@ -72,6 +73,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReactiveFormsModule,
     GaugeChartModule,
     NgxSpinnerModule,
+    MatDividerModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

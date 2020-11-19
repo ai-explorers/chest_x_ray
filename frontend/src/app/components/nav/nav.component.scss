@@ -27,7 +27,7 @@ a.nostyle:visited {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   margin-left: 15px;
 }
@@ -36,3 +36,15 @@ h1 {
   flex-grow: 1;
 }
 
+.logo {
+  height: 35px;
+}
+
+.logo-written {
+  height: 25px;
+}
+
+.last-item {
+  position: absolute;
+  bottom: 0;
+}
