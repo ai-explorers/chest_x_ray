@@ -1,5 +1,4 @@
 <div class="grid-container">
-    <h1 class="mat-h1">Dashboard</h1>
     <mat-grid-list [cols]="nColumns" rowHeight="350px">
       <mat-grid-tile *ngFor="let patient of patientObserver | async" colspan="1" rowspan="1">
         <mat-card class="dashboard-card">
