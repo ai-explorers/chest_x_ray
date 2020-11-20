@@ -35,10 +35,11 @@
             </mat-card-content>
         </mat-card>
     </div>
-    <div class="add-button">
-        <button mat-fab color="primary" (click)="fileInput.click()">
+    <div class="buttons">
+        <button mat-fab class="add-button" color="primary" (click)="fileInput.click()">
             <mat-icon>add</mat-icon>
         </button>
-        <input #fileInput hidden (change)="handleFileUpload($event.target.files)" type="file" id="fileUpload">
+        <input #fileInput hidden (change)="handleFileUpload($event.target.files.item(0))" type="file" id="fileUpload">
+        <button mat-raised-button class="demo-button" color="primary" (click)="uploadDemoFiles()">Demonstration</button>
     </div>
 </div>

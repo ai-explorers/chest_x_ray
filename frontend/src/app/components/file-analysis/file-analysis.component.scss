@@ -40,9 +40,20 @@
     margin-right: 10px;
 }
 
-// button to upload an image
+// buttons to upload images
+.buttons {
+    clear: left;            // line break after classification results
+}
+
+// (+)-button
 .add-button {
-    clear: left;            // button is placed in new row
+    margin: 0 50px 20px 0;
+}
+
+// Demonstration-button
+.demo-button {
+    height: 56px!important;
+    border-radius: 28px !important;
 }
 
 // spinner that gets displayed while waiting for backend response

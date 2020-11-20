@@ -5,6 +5,10 @@ import { GaugeChartOption } from "../../models/gaugeChartOption";
 import { PredictionResult } from "../../models/predictionResult";
 import { forkJoin } from 'rxjs';
 import { NgxSpinnerService } from "ngx-spinner";
+import { HttpClient } from "@angular/common/http";
+
+const healthyImagePath: string = "/assets/demo-upload/healthy_lung.jpg";
+const bacterialImagePath: string = "/assets/demo-upload/bacterial_pneumonia.jpg";
 
 @Component({
   selector: 'app-file-analysis',
@@ -36,6 +40,7 @@ export class FileAnalysisComponent implements OnInit {
   results: Array<PredictionResult>;
 
   constructor(private httpService: HttpService,
+    private httpClient: HttpClient,
     private conversionService: ConversionService,
     private spinnerService: NgxSpinnerService) { }
 
@@ -43,23 +48,23 @@ export class FileAnalysisComponent implements OnInit {
     this.results = new Array<PredictionResult>()
   }
 
-  handleFileUpload(files: FileList) {
+  handleFileUpload(file: File) {
     // create and display new card
     let newResult: PredictionResult = {
-      title: files.item(0).name,
+      title: file.name,
     };
     this.results.push(newResult);
     
     // display spinner for stage1
     this.spinnerService.show();
     
-    this.httpService.lungSegmentation(files.item(0))
+    this.httpService.lungSegmentation(file)
     .subscribe((segmentationRes: ArrayBuffer) => {
       console.log("Stage1: Lung segmentation was successful.");
       this.spinnerService.hide();
       // display stage1 result
       newResult.urlCutout = this.conversionService.arrayBufferToUrlString(segmentationRes);
-      newResult.urlImage = this.conversionService.fileToUrlString(files.item(0)),
+      newResult.urlImage = this.conversionService.fileToUrlString(file),
       this.results = this.updateLatestResult(this.results, newResult);
       // display spinner for stage2
       this.spinnerService.show();
@@ -100,6 +105,19 @@ export class FileAnalysisComponent implements OnInit {
     }
     resultList.push(latestResult);
     return resultList;
+  }
+
+  uploadDemoFiles() {
+    this.httpClient.get(healthyImagePath, { responseType: 'arraybuffer' }).subscribe(response => {
+      let healthyFile: File = this.conversionService.arrayBufferToFile(response, "healthy_lung.jpg");
+      this.handleFileUpload(healthyFile)
+    });
+    setTimeout(() => {
+      this.httpClient.get(bacterialImagePath, { responseType: 'arraybuffer' }).subscribe(response => {
+        let healthyFile: File = this.conversionService.arrayBufferToFile(response, "bacterial_pneumonia.jpg");
+        this.handleFileUpload(healthyFile)
+      });
+    }, 4000);
   }
 
 }
