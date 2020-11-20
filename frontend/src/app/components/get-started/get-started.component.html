@@ -1,10 +1,25 @@
 <div class="main-container">
-    <h1 class="mat-h1">Tutorial</h1>
-    <h2>File Analysis</h2>
+    <h1>File Analysis</h1>
     <p>
-        The File Analysis tutorial will soon be available. Thanks for your patience.
+        The File Analysis page is the core element of our application. You can upload X-ray images and view the classification results of our Deep Learning model.
     </p>
-    <h2>Patient Dashboard</h2>
+    <h2>How does it work?</h2>
+    <p>
+        When you click the (+) button, a file upload dialog will pop up.
+        Now you can select a local file from your device.
+        Note that only file types 'jpg', 'jpeg' and 'png' are supported.
+        After uploading the file it gets transferred to our backend where the classification takes place.
+    </p>
+    <h2>What happens with the uploaded data?</h2>
+    <p>
+        Since medical data is very confidential, none of the uploaded data gets stored, buffered, cached or the like.
+        The moment you leave the File Analysis page all data gets dropped.
+        This also means that when you navigate through the application or refresh the page, all classification results are lost.
+    </p>
+
+    <mat-divider></mat-divider>
+    
+    <h1>Patient Dashboard</h1>
     <p>
         The Patient Dashboard demonstrates that our web application could be enhanced to provide more functionalities than just X-ray analysis.
     </p>
