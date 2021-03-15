@@ -2,12 +2,19 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
       "name": "Debug jupyter",
       "type": "python",
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal",
-      "pythonPath": "${workspaceFolder}/backend/env/jupyter/bin/python"
+      "python": "${workspaceFolder}/backend/env/jupyter/bin/python"
     },
     {
       "name": "Stage1",
@@ -15,7 +22,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/backend/stage1/app.py",
       "console": "integratedTerminal",
-      "pythonPath": "${workspaceFolder}/backend/env/chest_x_ray/bin/python",
+      "python": "${workspaceFolder}/backend/env/chest_x_ray/bin/python",
       "cwd": "${workspaceFolder}/backend/stage1"
     },
     {
@@ -24,7 +31,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/backend/stage2/app.py",
       "console": "integratedTerminal",
-      "pythonPath": "${workspaceFolder}/backend/env/chest_x_ray/bin/python",
+      "python": "${workspaceFolder}/backend/env/chest_x_ray/bin/python",
       "cwd": "${workspaceFolder}/backend/stage2"
     },
     {
@@ -33,7 +40,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/backend/stage3/app.py",
       "console": "integratedTerminal",
-      "pythonPath": "${workspaceFolder}/backend/env/chest_x_ray/bin/python",
+      "python": "${workspaceFolder}/backend/env/chest_x_ray/bin/python",
       "cwd": "${workspaceFolder}/backend/stage3"
     },
     {
