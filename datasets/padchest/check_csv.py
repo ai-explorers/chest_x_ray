@@ -22,11 +22,11 @@ def check_files(directory, csv):
     print('Errors:', errors , 'of', len(df))
 
 
-normal_dir = '/mnt/f/DatasetsChestXRay/NochNichtInS3Kopieren/BIMCV-PadChest/relevant_files/normal'
-normal_csv = '/mnt/f/DatasetsChestXRay/NochNichtInS3Kopieren/BIMCV-PadChest/final_normal_meta_data_filtered.csv'
+normal_dir = '/mnt/f/DatasetsChestXRay/BIMCV-PadChest/normal'
+normal_csv = '/mnt/f/DatasetsChestXRay/BIMCV-PadChest/final_normal_meta_data_filtered.csv'
 
-pneumonia_dir = '/mnt/f/DatasetsChestXRay/NochNichtInS3Kopieren/BIMCV-PadChest/relevant_files/pneumonia'
-pneumonia_csv = '/mnt/f/DatasetsChestXRay/NochNichtInS3Kopieren/BIMCV-PadChest/final_pneumonia_meta_data_filtered.csv'
+pneumonia_dir = '/mnt/f/DatasetsChestXRay/BIMCV-PadChest/pneumonia'
+pneumonia_csv = '/mnt/f/DatasetsChestXRay/BIMCV-PadChest/final_pneumonia_meta_data_filtered.csv'
 
 check_files(normal_dir, normal_csv)
 check_files(pneumonia_dir, pneumonia_csv)
