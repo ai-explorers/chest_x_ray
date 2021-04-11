@@ -5,13 +5,13 @@ import shutil
 
 # paths
 path_external_drive = '/mnt/f/BIMCV-PadChest/unzipped/'
-path_destination_drive = '/mnt/g/DatasetsChestXRay/BIMCV-PadChest/'
+path_destination_drive = path_external_drive
 
 path_pneumonia_files = 'relevant_files/pneumonia/'
 path_normal_files = 'relevant_files/normal/'
 
-csv_pneumonia = '/home/jan/projects/chest_x_ray/chest_x_ray/datasets/padchest/final_pneumonia_meta_data_filtered.csv'
-csv_normal = '/home/jan/projects/chest_x_ray/chest_x_ray/datasets/padchest/final_normal_meta_data_filtered.csv'
+csv_pneumonia = path_external_drive + 'relevant_files/final_pneumonia_meta_data_filtered.csv'
+csv_normal = path_external_drive + 'relevant_files/final_normal_meta_data_filtered.csv'
 
 # read meta data from csv to pandas dataframe
 pneumonia_meta_data = pd.read_csv(csv_pneumonia) # usecols= ['ImageID','ImageDir','Projection','Labels'], sep='(,{1})(?! )',
