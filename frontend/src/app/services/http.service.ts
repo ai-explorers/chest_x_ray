@@ -4,9 +4,9 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { ConfigurationService } from "./configuration.service";
 import { Observable } from 'rxjs';
 
-const stage1Route: string = "stage1/predict";
-const stage2Route: string = "stage2/predict";
-const stage3Route: string = "stage3/predict";
+const stage1Route: string = "predict";
+const stage2Route: string = "predict";
+const stage3Route: string = "predict";
 
 /**
  * Service for http calls to backend
@@ -35,7 +35,7 @@ export class HttpService {
     this.configService.loadConfig('config.json').subscribe(configObject => {
       this.stage1Url = configObject.backend.stage1_url;
       this.stage2Url = configObject.backend.stage2_url;
-      this.stage3Url = configObject.backend.stage2_url; // TODO: This should be a separate entry in the config (github secret, config.json etc.)
+      this.stage3Url = configObject.backend.stage3_url;
     });
   }
 
