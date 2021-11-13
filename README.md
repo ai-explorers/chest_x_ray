@@ -10,8 +10,9 @@ This repo contains a casaced of CNNs for classifying chest-x-ray images.
 2. Viral vs. Bacterial CNN
 
 # Disclaimer (!)
-This prototyp must not be used for medical purposes. 
-The CNNs used here were trained on a very limited data set. Please do not claim diagnostic performance of a model without a clinical study.
+This prototype must not be used for medical purposes. 
+The CNNs used here were trained on a very limited data set. 
+Please do not claim diagnostic performance of a model without a clinical study.
 
 ## Frontend Demo
 ![Frontend Demo GIF](./img/frontend_demo.gif)
